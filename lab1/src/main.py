@@ -1,3 +1,5 @@
+import os
+
 import pyglet
 from game import Game
 from map import Map
@@ -14,9 +16,9 @@ def texture_set_mag_filter_nearest( texture ):
 	pyglet.gl.glBindTexture( texture.target, 0 )
 
 def start_game():
-    TILE_SIZE = 28
-    MAP_SIZE = 16
-
+    TILE_SIZE = 25
+    MAP_SIZE = 24
+    os.chdir('/Users/user/unv/is-labs/lab1')
     wall_image = pyglet.image.load('sprites/wall.png')
     texture_set_mag_filter_nearest(wall_image.get_texture())
 
@@ -44,7 +46,9 @@ def start_game():
         (255, 0, 0),
         (255, 183, 255),
         (0, 255, 255),
-        (255, 183, 81)
+        (255, 3, 81),
+        (255, 54, 81),
+        (12, 183, 81)
     ]
 
     ghosts = []
