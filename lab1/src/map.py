@@ -310,37 +310,3 @@ class Map:
         print(f"Start: {start}, Finish: {finish}")
         print(f"Explored {len(closed_set)} nodes")
         return []
-
-    
-    def a_star(self, start, finish, cost_function=None):
-        def heuristic(a, b):
-            return abs(a[0] - b[0]) + abs(a[1] - b[1])
-
-        open_set = {start}
-        came_from = {}
-        g_score = {start: 0}
-        f_score = {start: heuristic(start, finish)}
-
-        while len(open_set) > 0:
-            current = min(open_set, key=lambda x: f_score[x])
-            if current == finish:
-                path = []
-                while current != start:
-                    path.append(current)
-                    current = came_from[current]
-                path.append(start)
-                return path[::-1]
-
-            open_set.remove(current)
-            for neighbour in self.get_free_neighbours(*current):
-                if cost_function:
-                    tentative_g_score = g_score[current] + 1 + cost_function(neighbour)
-                else:
-                    tentative_g_score = g_score[current] + 1
-                if neighbour not in g_score or tentative_g_score < g_score[neighbour]:
-                    came_from[neighbour] = current
-                    g_score[neighbour] = tentative_g_score
-                    f_score[neighbour] = g_score[neighbour] + heuristic(neighbour, finish)
-                    open_set.add(neighbour)
-
-        return []

@@ -16,8 +16,8 @@ def texture_set_mag_filter_nearest( texture ):
 	pyglet.gl.glBindTexture( texture.target, 0 )
 
 def start_game():
-    TILE_SIZE = 25
-    MAP_SIZE = 24
+    TILE_SIZE = 14
+    MAP_SIZE = 80
     os.chdir('/Users/user/unv/is-labs/lab1')
     wall_image = pyglet.image.load('sprites/wall.png')
     texture_set_mag_filter_nearest(wall_image.get_texture())

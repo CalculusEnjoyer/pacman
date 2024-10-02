@@ -8,7 +8,7 @@ import math
 class Game:
     def __init__(self, map: Map, ghosts: List[Ghost], pacman: Pacman):
         self.is_updating = False
-        self.difficulty = 3
+        self.difficulty = 5
 
         self.map: Map = map
         self.pacman = pacman
